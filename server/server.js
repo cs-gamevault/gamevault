@@ -1,5 +1,4 @@
 const express = require('express');
-const bcrypt = require('bcrypt');
 const cookieParser = require('cookie-parser');
 const app = express();
 
@@ -15,7 +14,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 // route handlers
-app.use('/users', usersRouter);
+app.use('/api/users', usersRouter);
 
 // unknown route handler
 app.use('*', (req, res) => {
