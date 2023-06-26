@@ -7,7 +7,7 @@ const app = express();
 const PORT = 3000;
 
 // require routers
-const usersRouter = require('./routes/usersRouter');
+const usersRouter = require('./routes/users');
 
 // parse request body
 app.use(express.json());
