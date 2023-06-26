@@ -1,18 +1,13 @@
 const express = require('express');
-const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
-
 const app = express();
 
 // assign constants
 const PORT = 3000;
-const mongoURI = '';
-
-// connect to mongo database
-if (mongoURI) mongoose.connect(mongoURI, { dbName: 'test'});
+const postgresURI = '';
 
 // require routers
-const apiRouter = require('./routes/api.js');
+const userRouter = require('./routes/userRouter');
 
 // parse request body
 app.use(express.json());
@@ -20,7 +15,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 // route handlers
-app.use('/api', apiRouter);
+app.use('/api', userRouter);
 
 // unknown route handler
 app.use('*', (req, res) => {
@@ -28,13 +23,14 @@ app.use('*', (req, res) => {
 });
 
 // global error handler
-app.use((err, req, res, next) => { /* eslint-disable-line */
+app.use((err, req, res, next) => {
+  /* eslint-disable-line */
   const defaultError = {
     log: `Express caught an unknown middleware error: ${err}`,
     status: 500,
     message: 'Internal Server Error',
   };
-  
+
   const { log, status, message } = Object.assign({}, defaultError, err);
 
   console.log(log);
