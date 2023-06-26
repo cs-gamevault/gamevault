@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "target": "ES6",
+    "noImplicitAny": false,
+    "noImplicitThis": true,
+    "strictNullChecks": true,
+    "strict": false,
+    "pretty": true,
+    "outDir": "./dist",
+    "sourceMap": true,
+    "module": "commonjs",
+    "allowJs": true,
+    "jsx": "react",
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "noEmitOnError": false,
+    "types": ["node"]
+  },
+  "exclude": [
+    "node_modules"
+  ],
+  "include": ["./client"]
+}
