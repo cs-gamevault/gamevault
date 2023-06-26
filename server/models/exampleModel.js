@@ -1,8 +1,14 @@
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+const { Pool } = require('pg');
 
-const exampleSchema = new Schema({
-  name: { type: String, required: true },
+require('dotenv').config();
+
+const pool = new Pool({
+  connectionString: process.env.PG_URI,
 });
 
-module.exports = mongoose.model('Example', exampleSchema);
+module.exports = {
+  query: (text, params, callback) => {
+    console.log('executing query: ', text);
+    return pool.query(text, params, callback);
+  },
+};
