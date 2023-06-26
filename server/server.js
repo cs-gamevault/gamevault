@@ -24,13 +24,13 @@ app.use('*', (req, res) => {
 
 // global error handler
 app.use((err, req, res, next) => {
-  const defaultError = {
+  const defaultErr = {
     log: `Express caught an unknown middleware error: ${err}`,
     status: 500,
     message: 'Internal Server Error'
   };
 
-  const { log, status, message } = Object.assign({}, defaultError, err);
+  const { log, status, message } = Object.assign({}, defaultErr, err);
 
   console.log(log);
   return res.status(status).send(message);
