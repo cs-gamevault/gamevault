@@ -1,4 +1,5 @@
 const express = require('express');
+const bcrypt = require('bcrypt');
 const cookieParser = require('cookie-parser');
 const app = express();
 
@@ -24,11 +25,10 @@ app.use('*', (req, res) => {
 
 // global error handler
 app.use((err, req, res, next) => {
-  /* eslint-disable-line */
   const defaultError = {
     log: `Express caught an unknown middleware error: ${err}`,
     status: 500,
-    message: 'Internal Server Error',
+    message: 'Internal Server Error'
   };
 
   const { log, status, message } = Object.assign({}, defaultError, err);
