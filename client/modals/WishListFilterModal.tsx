@@ -3,8 +3,9 @@ import { FormGroup, FormControlLabel, Checkbox, Switch, Button } from "@mui/mate
 
 const handleSubmit = () => {
   /**
-   * submits the selected items into a function to filter out displayed entries
-   * that don't match the choices
+   * Submits the selected items into a function to filter the displayed entries
+   * array from context so it populates accordingly in the wishlist container.
+   * 
    * 
    * Add functionality to the 'x' button so it updates the context to show this modal as false
 */
