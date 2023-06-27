@@ -1,15 +1,27 @@
 const express = require('express');
-const app = express();
-
-// assign constants
-const PORT = 3000;
-
-// require routers
+const passport = require('passport');
+const session = require('express-session');
 const usersRouter = require('./routes/users');
+
+const app = express();
 
 // parse request body
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+// use express session middleware
+app.use(
+  session({
+    secret: 'secret', // TODO: make a custom secret in env file
+    resave: false,
+    saveUninitialized: true
+  })
+);
+
+// initialize passport with session support
+require('./passport'); // passport configuration file
+app.use(passport.initialize());
+app.use(passport.session());
 
 // route handlers
 app.use('/api/users', usersRouter);
@@ -34,8 +46,8 @@ app.use((err, req, res, next) => {
 });
 
 // start server
-app.listen(PORT, () => {
-  console.log(`Server listening on port ${PORT}!`);
+app.listen(3000, () => {
+  console.log('Server listening on port 3000!');
 });
 
 module.exports = app;
