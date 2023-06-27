@@ -4,10 +4,10 @@ const app = express();
 
 // assign constants
 const PORT = 3000;
-const postgresURI = '';
 
 // require routers
-const usersRouter = require('./routes/usersRouter');
+const usersRouter = require('./routes/users');
+const wishListRouter = require('./routes/wishlist');
 
 // parse request body
 app.use(express.json());
@@ -16,6 +16,7 @@ app.use(cookieParser());
 
 // route handlers
 app.use('/api', usersRouter);
+app.use('/api', wishListRouter);
 
 // unknown route handler
 app.use('*', (req, res) => {
