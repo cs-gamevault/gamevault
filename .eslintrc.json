@@ -1,20 +1,28 @@
 {
   "root": true,
+  "globals": {
+    "NodeJS": true,
+    "JSX": true
+  },
   "env": {
     "browser": true,
     "node": true,
-    "es2021": true
+    "es6": true,
+    "jest": true
   },
   "parserOptions": {
     "sourceType": "module",
     "ecmaVersion": "latest"
   },
   "plugins": [
-    "react"
+    "react",
+    "prettier"
   ],
   "extends": [
     "eslint:recommended",
-    "plugin:react/recommended"
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "prettier"
   ],
   "rules": {
     "indent": ["warn", 2],
