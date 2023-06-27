@@ -1,9 +1,6 @@
 import { Button } from "@mui/material";
 import React from "react";
 
-interface Props {
-  [key: string]: any;
-}
 // render a modal with 2 button: confirm, cancel
 // confirm deletes the game from the database and rerenders the list
 // cancel closes the modal by changing setshowdeletemodal to false
@@ -14,7 +11,7 @@ const deleteFromDatabase = () => {
    */
 }
 
-const ConfirmDeleteModal: React.FC<Props> = props => {
+const ConfirmDeleteModal = props => {
   const { setShowDeleteModal } = props;
 
   return (

@@ -9,11 +9,12 @@ import StickyNavBar from './components/StickyNavBar';
 import NoMatch from './components/NoMatch';
 
 const AppContext = createContext<any>(null);
-const [userInfo, setUserInfo] = useState({});
-const [APIFetchResults, setAPIFetchResults] = useState({});
-const [wishListFetchResults, setWishListFetchResults] = useState({});
+
 
 const App = () => {
+  const [userInfo, setUserInfo] = useState({});
+  const [APIFetchResults, setAPIFetchResults] = useState({});
+  const [wishListFetchResults, setWishListFetchResults] = useState({});
   return (
     <div>
       <h1>Hello world!</h1>

@@ -1,11 +1,7 @@
-import React from "react";
-import { Button } from "@mui/material";
+import React from 'react';
+import { Button } from '@mui/material';
 
-interface Props {
-  [key: string]: any;
-}
-
-const GameInfoModal: React.FC<Props> = props => {
+const GameInfoModal = props => {
   const { setShowInfoModal } = props;
 
   return (

@@ -12,8 +12,8 @@ import WishListFilterModal from '../modals/WishListFilterModal';
 const [showFilters, setShowFilterModal] = useState(false);
 
 
-const renderGameComponents = (): JSX.Element[] => {
-  const output: JSX.Element[]= [];
+const renderGameComponents = () => {
+  const output  = [];
   // loops through the list of filtered games in the state
   // adds a WishListGame to an array to populate the container with elements representing individual games
   // must pass down the element's unique informaton to populate modal properly 'gameInfo'

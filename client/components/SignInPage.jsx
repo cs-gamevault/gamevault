@@ -1,14 +1,12 @@
 import React, { useState } from 'react';
 
-interface LoginProps {
-  onFormSwitch: (formType: string) => void;
-}
 
-const SignIn: React.FC<LoginProps> = ({ onFormSwitch }) => {
+
+const SignIn = ({ onFormSwitch }) => {
   const [email, setEmail] = useState('');
   const [pass, setPass] = useState('');
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     console.log(email);
   };
