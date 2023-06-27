@@ -4,10 +4,9 @@ const app = express();
 
 // assign constants
 const PORT = 3000;
-const postgresURI = '';
 
 // require routers
-const usersRouter = require('./routes/usersRouter');
+const usersRouter = require('./routes/users');
 
 // parse request body
 app.use(express.json());
@@ -15,7 +14,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 // route handlers
-app.use('/api', usersRouter);
+app.use('/api/users', usersRouter);
 
 // unknown route handler
 app.use('*', (req, res) => {
@@ -24,14 +23,13 @@ app.use('*', (req, res) => {
 
 // global error handler
 app.use((err, req, res, next) => {
-  /* eslint-disable-line */
-  const defaultError = {
+  const defaultErr = {
     log: `Express caught an unknown middleware error: ${err}`,
     status: 500,
-    message: 'Internal Server Error',
+    message: 'Internal Server Error'
   };
 
-  const { log, status, message } = Object.assign({}, defaultError, err);
+  const { log, status, message } = Object.assign({}, defaultErr, err);
 
   console.log(log);
   return res.status(status).send(message);
