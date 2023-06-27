@@ -7,6 +7,7 @@ const PORT = 3000;
 
 // require routers
 const usersRouter = require('./routes/users');
+
 const wishListRouter = require('./routes/wishlist');
 
 // parse request body
@@ -15,7 +16,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 // route handlers
-app.use('/api', usersRouter);
+app.use('/api/users', usersRouter);
 app.use('/api', wishListRouter);
 
 // unknown route handler
@@ -25,14 +26,13 @@ app.use('*', (req, res) => {
 
 // global error handler
 app.use((err, req, res, next) => {
-  /* eslint-disable-line */
-  const defaultError = {
+  const defaultErr = {
     log: `Express caught an unknown middleware error: ${err}`,
     status: 500,
     message: 'Internal Server Error',
   };
 
-  const { log, status, message } = Object.assign({}, defaultError, err);
+  const { log, status, message } = Object.assign({}, defaultErr, err);
 
   console.log(log);
   return res.status(status).send(message);
