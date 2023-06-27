@@ -26,14 +26,10 @@ const SignUp = (props) => {
                 <label htmlFor="password">password</label>
                 <input value={pass} onChange={(e) => setPass(e.target.value)} type="password" placeholder="********" id="password" name="password" />
                 <button type="submit">Log In</button>
-            <button className="link-btn" onClick={() => props.onFormSwitch('login')}>Have an account? sign in here.</button>
+            <button className="link-btn" onClick={() => onFormSwitch('login')}>Login here</button>
         </div>
-        )
-
-
-
-    }
-
+    )
+}
 
   export default SignUp;
 
