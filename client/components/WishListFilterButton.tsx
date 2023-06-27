@@ -1,3 +1,5 @@
+import WishListFilterModal from "../modals/WishListFilterModal";
+
 const FilterButton = () => {
 
 }
