@@ -5,21 +5,21 @@ const handleSubmit = () => {
   /**
    * submits the selected items into a function to filter out displayed entries
    * that don't match the choices
+   * 
+   * Add functionality to the 'x' button so it updates the context to show this modal as false
 */
 }
 
 const WishListFilterModal = () => {
 
 
-
-
-
   return (
     // render a section for genre
     // render a section for platform
     // render a submit button
-    <div>
-      <FormGroup id="wishlistfilters">
+    <div id="wishlist-modal">
+      <Button className="close-modal" variant="text" >x</Button>
+      <FormGroup id="wishlistselections">
         <h2>Genre</h2>
         <FormControlLabel control={<Checkbox />} label="Genre#1" />
         <FormControlLabel control={<Checkbox />} label="Genre#2" />
@@ -31,7 +31,7 @@ const WishListFilterModal = () => {
         <h2>Show Unreleased Games</h2>
         <FormControlLabel control={<Switch />} label="Show Unreleased" />
         <br></br>
-        <Button type="submit" variant="contained" onClick={handleSubmit}></Button>        
+        <Button type="submit" variant="contained" onClick={handleSubmit}>Filter</Button>        
       </FormGroup>
     </div>
   );
