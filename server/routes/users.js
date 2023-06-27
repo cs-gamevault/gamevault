@@ -4,18 +4,25 @@ const passport = require('passport');
 const usersController = require('../controllers/usersController');
 
 router.post('/register', usersController.createUser, (req, res) => {
-  res.status(200).send({ message: 'Registration successful.' });
+  return res.status(200).send({ message: 'Registration successful.' });
 });
 
-router.post('/login', passport.authenticate('local', {
-  successRedirect: '/', // TODO: make sure to redirect to correct endpoint
-  failureRedirect: '/login'
-}));
+router.post('/login', (req, res, next) => {
+  passport.authenticate('local', (err, user, info) => {
+    if (err) {
+      return next({ log: `Error in login: ${err}` });
+    }
+    if (!user) {
+      return res.status(401).send({ success: false, message: 'Login failed' });
+    }
+    return res.status(200).send({ success: true, message: 'Login successs' });
+  })(req, res, next);
+});
 
 router.post('/logout', (req, res) => {
   req.logout();
   res.redirect('/login');
-  res.status(200).send({ message: 'Logout successful.' });
+  return res.status(200).send({ message: 'Logout successful.' });
 });
 
 module.exports = router;
