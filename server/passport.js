@@ -11,7 +11,6 @@ async function authenticateUser(username, password, done) {
 
     // username not found
     if (!user) {
-      console.log('username not found');
       return done(null, false, { message: 'Invalid username or password' });
     }
     // username found, but password incorrect
@@ -35,7 +34,7 @@ passport.serializeUser((user, done) => {
 passport.deserializeUser(async (id, done) => {
   try {
     // retrieve user from database (using id)
-    const data = await db.query('SELECT * FROM users WHERE _id = $1;', [id]);
+    const data = await db.query('SELECT * FROM users WHERE id = $1;', [id]);
     const user = data.rows[0];
 
     // return deserialized user
