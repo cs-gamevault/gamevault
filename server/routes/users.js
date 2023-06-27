@@ -3,7 +3,7 @@ const router = express.Router();
 const passport = require('passport');
 const usersController = require('../controllers/usersController');
 
-router.post('/register', usersController.addUser, (req, res) => {
+router.post('/register', usersController.createUser, (req, res) => {
   res.status(200).send({ message: 'Registration successful.' });
 });
 

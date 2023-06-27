@@ -9,17 +9,14 @@ async function authenticateUser(username, password, done) {
     const data = await db.query('SELECT * FROM users WHERE username = $1;', [username]);
     const user = await data.rows[0];
 
-    // username not found
-    if (!user) {
+    // username found and password correct, return authenticated user
+    if (user && await bcrypt.compare(password, user.password)) {
+      return done(null, user);
+    }
+    // username not found or password incorrect
+    else {
       return done(null, false, { message: 'Invalid username or password' });
     }
-    // username found, but password incorrect
-    if (!(await bcrypt.compare(password, user.password))) {
-      return done(null, false, { message: 'Invalid username or password' });
-    }
-
-    // username and password correct, return authenticated user
-    return done(null, user);
   } catch (err) {
     return done(err);
   }
