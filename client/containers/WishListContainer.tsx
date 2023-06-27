@@ -9,19 +9,18 @@ import WishListFilterModal from '../modals/WishListFilterModal';
  */
 
 // NOTE: this needs to go out into context so it is globally available
-const [showFilters, setShowFilters] = useState(false);
+const [showFilters, setShowFilterModal] = useState(false);
 
 
 const renderGameComponents = (): JSX.Element[] => {
   const output: JSX.Element[]= [];
   // loops through the list of filtered games in the state
   // adds a WishListGame to an array to populate the container with elements representing individual games
-  // must pass down the element's unique informaton to populate modal properly
+  // must pass down the element's unique informaton to populate modal properly 'gameInfo'
   // updates the state with the output array
 
   return output;
 }
-
 
 const WishListContainer = () => {
 
@@ -29,8 +28,8 @@ const WishListContainer = () => {
 
   return (
     <div>
-      {showFilters ? <WishListFilterModal /> : null}
-      <Button variant="outlined" >Select Filters</Button>
+      {showFilters ? <WishListFilterModal setShowFilterModal={setShowFilterModal} /> : null}
+      <Button variant="outlined" onClick={setShowFilterModal(true)}>Select Filters</Button>
     </div>
   );
 

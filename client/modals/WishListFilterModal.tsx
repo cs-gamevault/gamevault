@@ -6,12 +6,11 @@ const handleSubmit = () => {
    * Submits the selected items into a function to filter the displayed entries
    * array from context so it populates accordingly in the wishlist container.
    * 
-   * 
-   * Add functionality to the 'x' button so it updates the context to show this modal as false
 */
 }
 
-const WishListFilterModal = () => {
+const WishListFilterModal = (props) => {
+  const { setShowFilterModal } = props;
 
 
   return (
@@ -19,7 +18,7 @@ const WishListFilterModal = () => {
     // render a section for platform
     // render a submit button
     <div id="wishlist-modal">
-      <Button className="close-modal" variant="text" >x</Button>
+      <Button className="close-modal" variant="text" onClick={setShowFilterModal(false)}>x</Button>
       <FormGroup id="wishlistselections">
         <h2>Genre</h2>
         <FormControlLabel control={<Checkbox />} label="Genre#1" />
