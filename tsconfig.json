@@ -4,19 +4,18 @@
     "noImplicitThis": true,
     "strictNullChecks": true,
     "strict": false,
-    "pretty": true,
-    "outDir": "./dist",
     "sourceMap": true,
     "target": "ES6",
     "allowJs": true,
+    "module": "CommonJS",
     "moduleResolution": "node",
     "jsx": "react",
     "esModuleInterop": true,
     "resolveJsonModule": true,
     "skipLibCheck": true,
-    "noEmitOnError": false,
+    "noEmitOnError": true,
     "types": ["node"],
-    "allowImportingTsExtensions": true
+    "allowSyntheticDefaultImports": true
   },
   "exclude": ["./node_modules", "./server"],
   "include": ["./client"]

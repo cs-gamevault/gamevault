@@ -27,6 +27,7 @@ module.exports = {
   },
   module: {
     rules: [
+      // ts loader
       {
         test: /\.tsx?/,
         loader: 'ts-loader',
@@ -52,6 +53,6 @@ module.exports = {
     ],
   },
   resolve: {
-    extensions: ['.tsx', '.ts', '.js'],
+    extensions: ['.tsx', '.ts', '.js', '.jsx'],
   }
 };
