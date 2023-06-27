@@ -1,12 +1,15 @@
-import React from "react";
-
+import React, {useContext} from "react";
+import { ApplicationContext } from '../AppContext';
 import SignIn from "../components/SignInPage";
 import SignUp from "../components/SignUpPage";
 
 const LoginContainer = () => {
+  const { filteredWishList } = useContext(ApplicationContext)
 
   return (
-    <h3>Login Page</h3>
+    <div>
+      <h3>Login Container</h3>  
+    </div>
   )
   
 }

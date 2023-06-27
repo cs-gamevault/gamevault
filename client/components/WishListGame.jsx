@@ -18,6 +18,7 @@ const WishListGame = props => {
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const { gameInfo } = props;
   // this game component needs its individual game information passed down to it for the info modal
+  // make this a modular component by using a dyanmically rendered Plus or X button based on the function being passed into it (create entry or delete from db)
 
   return (
     <div>

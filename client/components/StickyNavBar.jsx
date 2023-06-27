@@ -4,6 +4,7 @@ import AddIcon from '@mui/icons-material/Add';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { NavLink, Outlet } from 'react-router-dom';
 
+
 // uses icons to navigate between home page, API search page, Account info Page
 const StickyNavBar = () => {
 
@@ -12,13 +13,13 @@ const StickyNavBar = () => {
     <div>
       <Outlet />
       <div id="sticky-nav-bar">
-        <NavLink to="../home">
+        <NavLink to="/home">
           <HomeIcon />
         </NavLink>
-        <NavLink to="../add">
+        <NavLink to="/add">
           <AddIcon />
         </NavLink>
-        <NavLink to="../account">
+        <NavLink to="/account">
           <AccountCircleIcon />
         </NavLink>
       </div>

@@ -1,4 +1,4 @@
-import React, { createContext, useState } from 'react';
+import React from 'react';
 import {
   createBrowserRouter,
   createRoutesFromElements,
@@ -6,6 +6,7 @@ import {
   Route,
 } from 'react-router-dom';
 import './styles.scss';
+import AppContextProvider from './AppContext';
 import LoginContainer from './containers/LoginContainer';
 import HomeContainer from './containers/HomeContainer';
 import AccountPage from './components/AccountPage';
@@ -13,7 +14,6 @@ import APISearchContainer from './containers/APISearchContainer';
 import StickyNavBar from './components/StickyNavBar';
 import NoMatch from './components/NoMatch';
 
-const AppContext = createContext(null);
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route element={<StickyNavBar />}>
@@ -27,30 +27,11 @@ const router = createBrowserRouter(
 );
 
 const App = () => {
-  const [userInfo, setUserInfo] = useState({});
-  const [APIFetchResults, setAPIFetchResults] = useState([]);
-  const [wishListFetchResults, setWishListFetchResults] = useState([]);
-  const [filteredWishList, setFilteredWishList] = useState(15);
-
   return (
-    <div>
-      <h1>Hello world!</h1>
-      <AppContext.Provider
-        value={{
-          userInfo,
-          setUserInfo,
-          APIFetchResults,
-          setAPIFetchResults,
-          wishListFetchResults,
-          setWishListFetchResults,
-          filteredWishList,
-          setFilteredWishList,
-        }}
-      >
-        <RouterProvider router={router} />
-      </AppContext.Provider>
-    </div>
-  );
+    <AppContextProvider>
+      <RouterProvider router={router} />
+    </AppContextProvider>
+  )
 };
 
 export default App;
