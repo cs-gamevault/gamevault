@@ -1,5 +1,4 @@
 const express = require('express');
-const cookieParser = require('cookie-parser');
 const app = express();
 
 // assign constants
@@ -11,7 +10,6 @@ const usersRouter = require('./routes/users');
 // parse request body
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cookieParser());
 
 // route handlers
 app.use('/api/users', usersRouter);
