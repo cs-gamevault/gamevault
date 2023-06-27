@@ -7,8 +7,7 @@
     "pretty": true,
     "outDir": "./dist",
     "sourceMap": true,
-    "module": "es6",
-    "target": "es5",
+    "target": "ES6",
     "allowJs": true,
     "moduleResolution": "node",
     "jsx": "react",
@@ -16,10 +15,9 @@
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "noEmitOnError": false,
-    "types": ["node"]
+    "types": ["node"],
+    "allowImportingTsExtensions": true
   },
-  "exclude": [
-    "./node_modules", "./server"
-  ],
+  "exclude": ["./node_modules", "./server"],
   "include": ["./client"]
 }
