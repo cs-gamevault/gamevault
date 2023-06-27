@@ -8,8 +8,7 @@ import WishListFilterModal from '../modals/WishListFilterModal';
  * 3. add the Select Filters button functionality
  */
 
-// NOTE: this needs to go out into context so it is globally available
-const [showFilters, setShowFilterModal] = useState(false);
+
 
 
 const renderGameComponents = () => {
@@ -23,17 +22,17 @@ const renderGameComponents = () => {
 }
 
 const WishListContainer = () => {
-
+  // NOTE: this needs to go out into context so it is globally available
+  const [showFilters, setShowFilterModal] = useState(false);
 
 
   return (
     <div>
       {showFilters ? <WishListFilterModal setShowFilterModal={setShowFilterModal} /> : null}
-      <Button variant="outlined" onClick={setShowFilterModal(true)}>Select Filters</Button>
+      <Button variant="outlined" onClick={setShowFilterModal(true)}>
+        Select Filters
+      </Button>
     </div>
   );
-
-
-
 };
 export default WishListContainer;

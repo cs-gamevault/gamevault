@@ -6,7 +6,7 @@ import SignUp from "../components/SignUpPage";
 const LoginContainer = () => {
 
   return (
-    <div>hi there</div>
+    <h3>Login Page</h3>
   )
   
 }
