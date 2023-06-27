@@ -11,17 +11,20 @@ const deleteFromDatabase = () => {
    */
 }
 
-const ConfirmDeleteModal = (props) => {
+const ConfirmDeleteModal = props => {
   const { setShowDeleteModal } = props;
 
   return (
     <div>
       <h3>Are you sure you want to delete this game from your list?</h3>
-      <Button variant="contained" onClick={() => deleteFromDatabase()}>Delete Game</Button>
-      <Button variant="outlined" onClick={setShowDeleteModal(false)}>x</Button>
+      <Button variant="contained" onClick={() => deleteFromDatabase()}>
+        Delete Game
+      </Button>
+      <Button variant="outlined" onClick={setShowDeleteModal(false)}>
+        x
+      </Button>
     </div>
-  )
-  
-}
+  );
+};
 
 export default ConfirmDeleteModal;
