@@ -6,7 +6,7 @@ interface LoginProps {
     onFormSwitch: (formType: string) => void;
 }
 
-export const Login: React.FC<LoginProps> = ({ onFormSwitch }) => {
+const SignIn: React.FC<LoginProps> = ({ onFormSwitch }) => {
     const [email, setEmail] = useState('');
     const [pass, setPass] = useState('');
 
