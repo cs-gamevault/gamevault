@@ -1,6 +1,7 @@
 import React from 'react';
-const Home = () => {
+import WishListContainer from './WishListContainer';
+const HomeContainer = () => {
 
 };
 
-export default Home;
+export default HomeContainer;

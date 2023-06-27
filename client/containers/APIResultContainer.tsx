@@ -1,6 +1,9 @@
 import React from 'react';
-const APIResult = () => {
+
+import APIGame from '../components/APIGame';
+
+const APIResultContainer = () => {
 
 }; 
 
-export default APIResult;
+export default APIResultContainer;

@@ -1,5 +1,9 @@
 import React from 'react';
-const WishList = () => {
+import WishListFilterButton from '../components/WishListFilterButton';
+import WishlistGame from '../components/WishListGame';
+
+
+const WishListContainer = () => {
 
 };
-export default WishList;
+export default WishListContainer;
