@@ -10,13 +10,11 @@ usersController.addUser = async function (req, res, next) {
   const values = [username, hashedPassword];
   const queryString = `
     INSERT INTO users (username, password) 
-    VALUES ($1, $2) 
-    RETURNING *;
+    VALUES ($1, $2);
   `;
 
   try {
-    const data = await db.query(queryString, values);
-    console.log(data);
+    await db.query(queryString, values);
     return next();
   } catch (err) {
     return next({ log: `Error in usersController.addUser: ${err}` });
