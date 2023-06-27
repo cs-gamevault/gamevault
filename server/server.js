@@ -17,7 +17,7 @@ app.use(cookieParser());
 
 // route handlers
 app.use('/api/users', usersRouter);
-app.use('/api', wishListRouter);
+app.use('/api/wishlist', wishListRouter);
 
 // unknown route handler
 app.use('*', (req, res) => {
