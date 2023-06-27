@@ -1,10 +1,6 @@
 import React, { createContext, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './styles.scss';
-import '@fontsource/roboto/300.css';
-import '@fontsource/roboto/400.css';
-import '@fontsource/roboto/500.css';
-import '@fontsource/roboto/700.css';
 import LoginContainer from './containers/LoginContainer';
 import HomeContainer from './containers/HomeContainer';
 import AccountPage from './components/AccountPage';
@@ -20,8 +16,8 @@ const [wishListFetchResults, setWishListFetchResults] = useState({});
 const App = () => {
   return (
     <div>
+      <h1>Hello world!</h1>
       <AppContext.Provider value={{ userInfo, setUserInfo, APIFetchResults, setAPIFetchResults, wishListFetchResults, setWishListFetchResults }}>
-        <h1>Hello world!</h1>
         <Router>
           <Routes>
             <Route path="/" element={<LoginContainer />} />
