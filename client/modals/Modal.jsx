@@ -37,6 +37,7 @@ const ModalOverlay = props => {
         body: JSON.stringify(body),
       });
     }
+    props.onClose(false);
   }
 
   return (
@@ -62,7 +63,12 @@ const Modal = props => {
     <Fragment>
       {ReactDOM.createPortal(<Backdrop onClose={props.onClose} />, portalElement)}
       {ReactDOM.createPortal(
-        <ModalOverlay data={props.data} mode={props.mode} user_id={props.user_id}>
+        <ModalOverlay
+          data={props.data}
+          mode={props.mode}
+          user_id={props.user_id}
+          onClose={props.onClose}
+        >
           {props.children}
         </ModalOverlay>,
         portalElement
