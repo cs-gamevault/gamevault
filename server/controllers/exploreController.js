@@ -2,7 +2,6 @@ const exploreController = {};
 
 exploreController.getGames = async function (req, res, next) {
   try {
-    console.log('BACKEBD~');
     //  Post request to https://api.igdb.com/v4/games
     const response = await fetch('https://api.igdb.com/v4/games', {
       method: 'POST',
@@ -15,12 +14,6 @@ exploreController.getGames = async function (req, res, next) {
     });
 
     const data = await response.json();
-    console.log(' ');
-    console.log(' ');
-    console.log(' ');
-    console.log(' ');
-    console.log('Ayooooo');
-    console.log(data);
     //  Store data in res.locals.data
     res.locals.data = data;
 
