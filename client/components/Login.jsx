@@ -1,8 +1,9 @@
 import React, { useState, useContext } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { Button } from '@mui/material';
-
 import { ApplicationContext } from '../AppContext';
+
+import './LoginRegister.scss';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -37,20 +38,22 @@ const Login = () => {
   };
 
   return (
-    <div>
+    <div class='loginregister'>
       <h2>Log In</h2>
       <form onSubmit={e => handleSubmit(e)}>
-        <label htmlFor="username">Username</label>
-        <input id="username" name="username" type="text" placeholder="Username..." />
-        <label htmlFor="password">Password</label>
-        <input id="password" name="password" type="password" placeholder="Password..." />
+        <div className='input'>
+          <label htmlFor="username">Username</label>
+          <input id="username" name="username" type="text" placeholder="Username" />
+        </div>
+        <div className='input'>
+          <label htmlFor="password">Password</label>
+          <input id="password" name="password" type="password" placeholder="Password" />
+        </div>
         {loginError}
-        <Button variant="contained" type="submit">
-          Log In
-        </Button>
-        <NavLink to="/register">
-          <Button variant="outlined">Register</Button>
-        </NavLink>
+        <div className='buttons'>
+          <Button variant="contained" type="submit">Log In</Button>
+          <NavLink to="/register"><Button variant="outlined">Register</Button></NavLink>
+        </div>
       </form>
     </div>
   );
