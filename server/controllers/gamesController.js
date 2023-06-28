@@ -3,7 +3,6 @@ const db = require('../models/database');
 const gameController = {
   addGame: async (req, res, next) => {
     try {
-      console.log(123213123);
       const { game } = req.body; //not sure
       // Trying to extract the game object
       // Query the database for any existing games with the same title
@@ -15,8 +14,8 @@ const gameController = {
       if (existingGame.rows.length === 0) {
         const result = await db.query(
           // Insert the new game into the database
-          'INSERT INTO games (name, genres, platforms, cover, summary) VALUES ($1, $2, $3, $4 , $5) RETURNING id',
-          [game.name, game.genres, game.platforms, game.cover, game.summary]
+          'INSERT INTO games (id,name, genres, platforms, cover, summary) VALUES ($1, $2, $3, $4 , $5, $6) RETURNING id',
+          [game.id, game.name, game.genres, game.platforms, game.cover, game.summary]
         );
         // Set game_id to the ID of the newly game
         game_id = result.rows[0].id;
