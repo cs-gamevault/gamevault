@@ -14,6 +14,7 @@ const wishListController = {
       return next(error);
     }
   },
+  //genre game image , game title , platform 
   addList: async (req, res, next) => {
     try {
       const { user_id } = req.query;

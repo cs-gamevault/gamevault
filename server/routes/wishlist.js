@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const wishListController = require('./controllers/wishListController.js');
-const gameController = require('./controllers/gameController.js');
+const gameController = require('./controllers/gamesController.js');
 
 router.get('/wishlists', wishListController.getList, (req, res) => {
   return res.status(200).json(res.locals.wishlist);
