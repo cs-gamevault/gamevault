@@ -3,8 +3,9 @@ const passport = require('passport');
 const session = require('express-session');
 const usersRouter = require('./routes/users');
 const exploreRouter = require('./routes/explore');
-
+const wishListRouter = require('./routes/wishlist');
 const app = express();
+
 
 // parse request body
 app.use(express.json());
@@ -26,6 +27,7 @@ app.use(passport.session());
 
 // route handlers
 app.use('/api/users', usersRouter);
+app.use('/api/wishlist', wishListRouter);
 app.use('/api/explore', exploreRouter);
 
 // unknown route handler
