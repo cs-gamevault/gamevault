@@ -5,7 +5,7 @@ const usersController = require('../controllers/usersController');
 
 router.post('/register', usersController.createUser, (req, res) => {
   if (res.locals.success) {
-    return res.status(201).send({ message: 'Registration successful' });
+    return res.status(201).send({ message: 'Registration successful', user_id: res.locals.user_id });
   }
   else {
     return res.status(409).send({ message: 'Registration failed' });
@@ -19,7 +19,7 @@ router.post('/login', (req, res, next) => {
     }
     
     if (user) {
-      return res.status(200).send({ message: 'Login successful' });
+      return res.status(200).send({ message: 'Login successful', user_id: user.id });
     }
     else {
       return res.status(401).send({ message: 'Login failed' });
