@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import Game from '../components/Game';
 import styles from './GameContainer.module.scss';
 
-const GameContainer = () => {
+const GameContainer = (props) => {
+  const { mode } = props;
   const [games, setGames] = useState([]);
   
   useEffect(() => {
@@ -39,6 +40,7 @@ const GameContainer = () => {
             platforms={allPlatforms}
             summary={summary}
             key={name}
+            mode={mode}
           />
         );
       }
@@ -49,7 +51,7 @@ const GameContainer = () => {
 
   return (
     <div className={styles.div}>
-      <h2 className={styles.h2}>Explore Games!</h2>
+      <h2 className={styles.h2}>{mode === 'wish' ? 'Your Wishlist' : 'Explore Games!'}</h2>
       <div className={styles.container}>{games}</div>
     </div>
   );

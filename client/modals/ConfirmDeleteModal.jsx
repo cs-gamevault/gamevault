@@ -1,5 +1,5 @@
-import { Button } from '@mui/material';
 import React from 'react';
+import { Button } from '@mui/material';
 
 // render a modal with 2 button: confirm, cancel
 // confirm deletes the game from the database AND closes the modal

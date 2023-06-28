@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { createPortal } from 'react-dom';
+
 import { Button } from '@mui/material';
 
 const addToDatabase = () => {
@@ -8,7 +10,7 @@ const addToDatabase = () => {
 };
 
 const GameInfoModal = props => {
-  const { gameData, componentType, setShowInfoModal } = props;
+  const { mode, setShowInfoModal } = props;
 
   const [showDeleteModal, setShowDeleteModal] = useState(false);
 
@@ -31,11 +33,11 @@ const GameInfoModal = props => {
       <Button
         variant="contained"
         onClick={() => {
-          if (componentType === 'API') {
-            // if the componentType is API, this button will send a POST request to the database with the game's info
+          if (mode === 'explore') {
+            // if mode is explore, this button will send a POST request to the database with the game's info
             addToDatabase();
-          } else if (componentType === 'WishList') {
-            // if the componentType is WishList, this button will open the ConfirmDeleteModal
+          } else if (mode === 'wish') {
+            // if mode is wish, this button will open the ConfirmDeleteModal
             // if user confirms, that modal will fire a function that sends a DELETE request to the db to remove the current game
             setShowDeleteModal(true);
           } else {
@@ -43,7 +45,7 @@ const GameInfoModal = props => {
           }
         }}
       >
-        {componentType === 'API' ? 'Add to WishList' : 'Delete'}
+        {mode === 'explore' ? 'Add to WishList' : 'Delete'}
       </Button>
       <Button
         className="closeModal"
