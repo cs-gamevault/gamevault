@@ -1,24 +1,31 @@
-import React from "react";
-import { FormGroup, FormControlLabel, Checkbox, Switch, Button } from "@mui/material";
+import React from 'react';
+import { FormGroup, FormControlLabel, Checkbox, Switch, Button } from '@mui/material';
 
 const handleSubmit = () => {
   /**
    * Submits the selected items into a function to filter the displayed entries
    * array from context so it populates accordingly in the wishlist container.
-   * 
-*/
-}
+   *
+   */
+};
 
-const WishListFilterModal = (props) => {
+const WishListFilterModal = props => {
   const { setShowFilterModal } = props;
-
 
   return (
     // render a section for genre
     // render a section for platform
     // render a submit button
     <div id="wishlist-modal">
-      <Button className="close-modal" variant="text" onClick={setShowFilterModal(false)}>x</Button>
+      <Button
+        className="close-modal"
+        variant="text"
+        onClick={() => {
+          setShowFilterModal(false);
+        }}
+      >
+        x
+      </Button>
       <FormGroup id="wishlistselections">
         <h2>Genre</h2>
         <FormControlLabel control={<Checkbox />} label="Genre#1" />
@@ -31,15 +38,12 @@ const WishListFilterModal = (props) => {
         <h2>Show Unreleased Games</h2>
         <FormControlLabel control={<Switch />} label="Show Unreleased" />
         <br></br>
-        <Button type="submit" variant="contained" onClick={handleSubmit}>Filter</Button>        
+        <Button type="submit" variant="contained" onClick={handleSubmit}>
+          Filter
+        </Button>
       </FormGroup>
     </div>
   );
-
-
-
-
-
 };
 
-export default WishListFilterModal
+export default WishListFilterModal;
