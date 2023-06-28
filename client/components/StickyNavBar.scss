@@ -1,0 +1,11 @@
+#sticky-nav-bar {
+  position: fixed;
+  background-color: #fffffe;
+  bottom: 0;
+  height: 4rem;
+  width: 100%;
+  border-top: 2px solid rgba(0, 0, 0, 0.05);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
