@@ -3,10 +3,12 @@ const HTMLWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   mode: process.env.NODE_ENV,
-  entry: './client/index.tsx',
+  entry: './client/index.jsx',
   output: {
     filename: 'bundle.js',
     path: path.join(__dirname, '/dist'),
+    publicPath: '/',
+    clean: true,
   },
   plugins: [
     // bundle html files
@@ -24,14 +26,13 @@ module.exports = {
     proxy: {
       '/api': 'http://localhost:3000',
     },
+    historyApiFallback: true,
   },
   module: {
     rules: [
-      // ts loader
       {
-        test: /\.tsx?/,
-        loader: 'ts-loader',
-        exclude: /node_modules/,
+        test: /\.(eot|ttf|svg|woff|woff2|png|jpe?g|gif)$/i,
+        use: [{ loader: 'file-loader' }],
       },
       // babel loaders
       {
@@ -54,5 +55,5 @@ module.exports = {
   },
   resolve: {
     extensions: ['.tsx', '.ts', '.js', '.jsx'],
-  }
+  },
 };

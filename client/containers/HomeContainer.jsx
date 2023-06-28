@@ -1,12 +1,13 @@
 import React from 'react';
-import WishListContainer from './WishListContainer';
+import ListContainer from './ListContainer';
 
 
 const HomeContainer = () => {
 
   return (
     <div>
-      <WishListContainer />
+      <h1>Home Container</h1>
+      <ListContainer />
     </div>
   )
 
