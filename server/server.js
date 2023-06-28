@@ -7,6 +7,7 @@ const PORT = 3000;
 
 // require routers
 const usersRouter = require('./routes/users');
+const exploreRouter = require('./routes/explore');
 
 const wishListRouter = require('./routes/wishlist');
 
@@ -18,6 +19,7 @@ app.use(cookieParser());
 // route handlers
 app.use('/api/users', usersRouter);
 app.use('/api/wishlist', wishListRouter);
+app.use('/api/explore', exploreRouter);
 
 // unknown route handler
 app.use('*', (req, res) => {
