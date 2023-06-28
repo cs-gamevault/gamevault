@@ -19,14 +19,15 @@ const Login = () => {
     };
 
     try {
-      const res = fetch('/api/users/login', {
+      const res = await fetch('/api/users/login', {
         method: 'POST',
         headers: { 'Content-Type': 'Application/JSON' },
         body: JSON.stringify(user),
       });
-
-      if ((await res).ok) {
+      const data = await res.json();
+      if (res.ok) {
         //  Call setUser_id() and pass in the id of the user
+        setUser_id(data.user_id);
         navigate('/wishlist');
       } else {
         setLoginError(<span>Invalid username or password</span>);
