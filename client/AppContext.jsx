@@ -5,7 +5,7 @@ export const ApplicationContext = createContext(null);
 const ApplicationContextProvider = props => {
   const children = props.children;
 
-  const [userInfo, setUserInfo] = useState({});
+  const [user_id, setUser_id] = useState(null);
   const [APIResult, setAPIResult] = useState([]);
   const [wishList, setWishList] = useState([]);
   const [filteredWishList, setFilteredWishList] = useState(wishList);
@@ -15,8 +15,8 @@ const ApplicationContextProvider = props => {
   return (
     <ApplicationContext.Provider
       value={{
-        userInfo,
-        setUserInfo,
+        user_id,
+        setUser_id,
         APIResult,
         setAPIResult,
         wishList,

@@ -3,7 +3,6 @@ const db = require('../models/database');
 const gameController = {
   addGame: async (req, res, next) => {
     try {
-      console.log(123213123);
       const { game } = req.body; //not sure
       // Trying to extract the game object
       // Query the database for any existing games with the same title

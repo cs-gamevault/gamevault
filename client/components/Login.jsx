@@ -1,12 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { Button } from '@mui/material';
+
+import { ApplicationContext } from '../AppContext';
 
 const Login = () => {
   const navigate = useNavigate();
   const [loginError, setLoginError] = useState();
 
-  const handleSubmit = async (event) => {
+  const { setUser_id } = useContext(ApplicationContext);
+
+  const handleSubmit = async event => {
     event.preventDefault();
 
     const user = {
@@ -18,18 +22,17 @@ const Login = () => {
       const res = fetch('/api/users/login', {
         method: 'POST',
         headers: { 'Content-Type': 'Application/JSON' },
-        body: JSON.stringify(user)
-      })
+        body: JSON.stringify(user),
+      });
 
       if ((await res).ok) {
+        //  Call setUser_id() and pass in the id of the user
         navigate('/wishlist');
-      }
-      else {
+      } else {
         setLoginError(<span>Invalid username or password</span>);
       }
-    }
-    catch (err) {
-      console.log(`Error in Login.jsx: ${err}`)
+    } catch (err) {
+      console.log(`Error in Login.jsx: ${err}`);
     }
   };
 
