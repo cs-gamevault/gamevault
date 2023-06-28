@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { Button } from '@mui/material';
 
 const Login = () => {
+  const navigate = useNavigate();
+
   const handleSubmit = e => {
     e.preventDefault();
     const loginInfo = {
@@ -10,7 +12,7 @@ const Login = () => {
       password: e.target[1].value,
     };
     console.log('NEW LOGIN: ', loginInfo);
-    fetch('/api/login', {
+    fetch('/api/users/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'Application/JSON',
@@ -19,7 +21,6 @@ const Login = () => {
     })
       .then(res => {
         if (res.ok) {
-          const navigate = useNavigate();
           navigate('/wishlist');
         }
       })
