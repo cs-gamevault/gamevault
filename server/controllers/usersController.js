@@ -26,6 +26,11 @@ usersController.createUser = async function (req, res, next) {
     const values = [username, hashedPassword];
     const result = await db.query(text, values);
     
+    // store user id in res.locals to send back to client
+    const data = await db.query('SELECT * FROM users WHERE username = $1;', [username]);
+    const user = await data.rows[0];
+    res.locals.user_id = user.id;
+
     res.locals.success = true;
     return next();
   } catch (err) {
