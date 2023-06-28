@@ -4,13 +4,12 @@ import AddIcon from '@mui/icons-material/Add';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { NavLink, Outlet } from 'react-router-dom';
 
+import './StickyNavBar.scss';
 
 // uses icons to navigate between home page, API search page, Account info Page
 const StickyNavBar = () => {
-
-
   return (
-    <div>
+    <div id="root">
       <Outlet />
       <div id="sticky-nav-bar">
         <NavLink to="/wishlist">
