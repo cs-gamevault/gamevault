@@ -11,9 +11,8 @@ import './styles.scss';
 import AppContextProvider from './AppContext';
 import Login from './components/Login';
 import Register from './components/Register';
-import WishListContainer from './containers/WishListContainer';
 import AccountPage from './components/AccountPage';
-import ExploreContainer from './containers/ExploreContainer';
+import GameContainer from './containers/GameContainer';
 import StickyNavBar from './components/StickyNavBar';
 import NoMatch from './components/Register';
 
@@ -22,8 +21,8 @@ const router = createBrowserRouter(
     <Route element={<StickyNavBar />}>
       <Route path="/" element={<Login />} />
       <Route path="/register" element={<Register />} />
-      <Route path="/wishlist" element={<WishListContainer />} />
-      <Route path="/explore" element={<ExploreContainer />} />
+      <Route path="/wishlist" element={<GameContainer mode="wish" />} />
+      <Route path="/explore" element={<GameContainer mode="explore" />} />
       <Route path="/account" element={<AccountPage />} />
       <Route path="*" element={<NoMatch />} />
     </Route>

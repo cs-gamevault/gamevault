@@ -5,38 +5,18 @@ import GameInfoModal from '../modals/GameInfoModal';
 import { Button } from '@mui/material';
 import InfoIcon from '@mui/icons-material/Info';
 
-const Game = props => {
-  // const [showInfoModal, setShowInfoModal] = useState(false);
-  // const platforms = props.gameData.platforms
-  //   .map(platform => {
-  //     return platform.name;
-  //   })
-  //   .join(', ');
-  // return (
-  //   <Button
-  //     variant="outlined"
-  //     onClick={() => {
-  //       console.log(props.number);
-  //     }}
-  //   >
-  //     <p>{props.number}</p>
-  //     <p>{props.gameData.name}</p>
-  //     <p>for {platforms}</p>
-  //     {showInfoModal ? (
-  //       <GameInfoModal
-  //         componentType={props.componentType}
-  //         gameData={props.gameData}
-  //         setShowInfoModal={setShowInfoModal}
-  //       />
-  //     ) : (
-  //       <InfoIcon
-  //         onClick={() => {
-  //           setShowInfoModal(true);
-  //         }}
-  //       />
-  //     )}
-  //   </Button>
-  // );
+import smile from '../assets/smile.png';
+
+const Game = ({ id, name, cover, genres, platforms, summary }) => {
+  const src = cover ? `https://${cover}` : smile;
+
+  return (
+    <button>
+      <img src={src} />
+      <h1>{name}</h1>
+      {platforms ? <p>for {platforms}</p> : platforms}
+    </button>
+  );
 };
 
 export default Game;
