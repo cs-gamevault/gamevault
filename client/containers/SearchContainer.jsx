@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 import APIGame from '../components/APIGame';
 
-import styles from './APIContainer.module.scss';
+import styles from './SearchContainer.module.scss';
 
 import data from '../../data.js';
 

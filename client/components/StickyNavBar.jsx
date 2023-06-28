@@ -16,7 +16,7 @@ const StickyNavBar = () => {
         <NavLink to="/home">
           <HomeIcon />
         </NavLink>
-        <NavLink to="/add">
+        <NavLink to="/search">
           <AddIcon />
         </NavLink>
         <NavLink to="/account">
