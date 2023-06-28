@@ -5,7 +5,9 @@ import {
   RouterProvider,
   Route,
 } from 'react-router-dom';
+
 import './styles.scss';
+
 import AppContextProvider from './AppContext';
 import LoginContainer from './containers/LoginContainer';
 import HomeContainer from './containers/HomeContainer';
