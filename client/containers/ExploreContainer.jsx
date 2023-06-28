@@ -1,27 +1,24 @@
 import React, { useState, useEffect } from 'react';
-
-import APIGame from '../components/APIGame';
-
-import styles from './SearchContainer.module.scss';
-
-import data from '../../data.js';
+import Game from '../components/Game';
+import styles from './ExploreContainer.module.scss';
 
 const APIResultContainer = () => {
   const [games, setGames] = useState([]);
 
   useEffect(() => {
-    //  Send a GET request to server
-    //  Server then makes a call to the API
-    //  Then responds to the front end with the game data
-    //  Store this in a data variable
-    const newGames = [];
+    (async () => {
+      // fetch game data for explore page
+      const res = await fetch('/api/explore');
+      const data = await res.json();
 
-    for (let i = 0; i < data.length; i++) {
-      const game = data[i];
-      newGames.push(<APIGame gameData={game} key={i} number={i + 1} componentType="API" />);
-    }
+      const newGames = [];
 
-    setGames(newGames);
+      for (let i = 0; i < data.length; i++) {
+        newGames.push(<Game data={data[i]} key={data[i].name} componentType="API" />);
+      }
+
+      setGames(newGames);
+    })();
   }, []);
 
   return (
