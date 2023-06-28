@@ -1,16 +1,25 @@
-import React from 'react';
+import React, { useContext } from 'react';
+
 import { FormGroup, FormControlLabel, Checkbox, Switch, Button } from '@mui/material';
 
-const handleSubmit = () => {
-  /**
-   * Submits the selected items into a function to filter the displayed entries
-   * array from context so it populates accordingly in the wishlist container.
-   *
-   */
-};
+import { ApplicationContext } from '../AppContext';
 
-const WishListFilterModal = props => {
-  const { setShowFilterModal } = props;
+
+
+const WishListFiltersModal = props => {
+  const { showFiltersModal, setShowFiltersModal, setSelectedFilters } = useContext(ApplicationContext)
+  
+
+
+  const handleSubmit= () => {
+    /**
+     * Updates state with the selected filter options as an object with keys
+     * that match gameData keys, and values that are a list of selected filters.
+     * 
+     * should it reset the values of the filter options to false (empty)?
+     */
+  };
+
 
   return (
     // render a section for genre
@@ -21,12 +30,13 @@ const WishListFilterModal = props => {
         className="close-modal"
         variant="text"
         onClick={() => {
-          setShowFilterModal(false);
+          setShowFiltersModal(false);
         }}
       >
         x
       </Button>
-      <FormGroup id="wishlistselections">
+
+      <FormGroup id="wishListSelections">
         <h2>Genre</h2>
         <FormControlLabel control={<Checkbox />} label="Genre#1" />
         <FormControlLabel control={<Checkbox />} label="Genre#2" />
@@ -38,7 +48,7 @@ const WishListFilterModal = props => {
         <h2>Show Unreleased Games</h2>
         <FormControlLabel control={<Switch />} label="Show Unreleased" />
         <br></br>
-        <Button type="submit" variant="contained" onClick={handleSubmit}>
+        <Button type="submit" variant="contained" onClick={() => { handleSubmit() }}>
           Filter
         </Button>
       </FormGroup>
@@ -46,4 +56,4 @@ const WishListFilterModal = props => {
   );
 };
 
-export default WishListFilterModal;
+export default WishListFiltersModal;

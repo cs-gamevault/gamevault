@@ -6,21 +6,27 @@ const ApplicationContextProvider = props => {
   const children = props.children;
 
   const [userInfo, setUserInfo] = useState({});
-  const [APIFetchResults, setAPIFetchResults] = useState([]);
-  const [wishListFetchResults, setWishListFetchResults] = useState([]);
-  const [filteredWishList, setFilteredWishList] = useState(15);
+  const [APIResult, setAPIResult] = useState([]);
+  const [wishList, setWishList] = useState([]);
+  const [filteredWishList, setFilteredWishList] = useState(wishList);
+  const [showFiltersModal, setShowFiltersModal] = useState(false);
+  const [selectedFilters, setSelectedFilters] = useState({});
 
   return (
     <ApplicationContext.Provider
       value={{
         userInfo,
         setUserInfo,
-        APIFetchResults,
-        setAPIFetchResults,
-        wishListFetchResults,
-        setWishListFetchResults,
+        APIResult,
+        setAPIResult,
+        wishList,
+        setWishList,
         filteredWishList,
         setFilteredWishList,
+        showFiltersModal,
+        setShowFiltersModal,
+        selectedFilters,
+        setSelectedFilters,
       }}
     >
       {children}

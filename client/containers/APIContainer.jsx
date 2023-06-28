@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 import APIGame from '../components/APIGame';
 
-import styles from './APIResultContainer.module.scss';
+import styles from './APIContainer.module.scss';
 
 import data from '../../data.js';
 
@@ -18,7 +18,7 @@ const APIResultContainer = () => {
 
     for (let i = 0; i < data.length; i++) {
       const game = data[i];
-      newGames.push(<APIGame data={game} key={i} number={i + 1} />);
+      newGames.push(<APIGame gameData={game} key={i} number={i + 1} componentType="API" />);
     }
 
     setGames(newGames);
