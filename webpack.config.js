@@ -7,6 +7,8 @@ module.exports = {
   output: {
     filename: 'bundle.js',
     path: path.join(__dirname, '/dist'),
+    publicPath: '/',
+    clean: true,
   },
   plugins: [
     // bundle html files
@@ -24,10 +26,10 @@ module.exports = {
     proxy: {
       '/api': 'http://localhost:3000',
     },
+    historyApiFallback: true,
   },
   module: {
     rules: [
-      // ts loader
       {
         test: /\.(eot|ttf|svg|woff|woff2|png|jpe?g|gif)$/i,
         use: [{ loader: 'file-loader' }],
