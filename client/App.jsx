@@ -12,7 +12,7 @@ import AppContextProvider from './AppContext';
 import LoginContainer from './containers/LoginContainer';
 import HomeContainer from './containers/HomeContainer';
 import AccountPage from './components/AccountPage';
-import APISearchContainer from './containers/APISearchContainer';
+import APIResultContainer from './containers/APIResultContainer';
 import StickyNavBar from './components/StickyNavBar';
 import NoMatch from './components/NoMatch';
 
@@ -21,7 +21,7 @@ const router = createBrowserRouter(
     <Route element={<StickyNavBar />}>
       <Route path="/" element={<LoginContainer />} />
       <Route path="/home" element={<HomeContainer />} />
-      <Route path="/add" element={<APISearchContainer />} />
+      <Route path="/add" element={<APIResultContainer />} />
       <Route path="/account" element={<AccountPage />} />
       <Route path="*" element={<NoMatch />} />
     </Route>
@@ -33,7 +33,7 @@ const App = () => {
     <AppContextProvider>
       <RouterProvider router={router} />
     </AppContextProvider>
-  )
+  );
 };
 
 export default App;
