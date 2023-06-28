@@ -1,4 +1,5 @@
 import React, { useEffect, useContext } from 'react';
+import { createPortal } from 'react-dom';
 import { ApplicationContext } from '../AppContext';
 import { Button } from '@mui/material';
 
@@ -25,6 +26,7 @@ const renderWishList = (filteredGames) => {
 };
 
 const ListContainer = () => {
+  const portal = document.querySelector('#modalPortal1')
   // use the showFiltersModal to dynamically render the modal
   const { showFiltersModal, setShowFiltersModal, setWishList, filteredWishList } = useContext(ApplicationContext);
 
@@ -39,7 +41,7 @@ const ListContainer = () => {
     <div>
       <h3>List Container: List of Game components should render here once user adds API selectsions to DB.</h3>
       {renderWishList(filteredWishList)}
-      {showFiltersModal ? <WishListFilterModal /> : null}
+      {showFiltersModal ? createPortal(<WishListFilterModal />, portal ) : null}
       <Button
         variant="outlined"
         onClick={() => {
