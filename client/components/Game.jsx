@@ -7,11 +7,15 @@ import InfoIcon from '@mui/icons-material/Info';
 
 import smile from '../assets/smile.png';
 
-const Game = ({ id, name, cover, genres, platforms, summary }) => {
+const Game = ({ id, name, cover, genres, platforms, summary, onClick }) => {
   const src = cover ? `https://${cover}` : smile;
 
   return (
-    <button>
+    <button
+      onClick={() => {
+        onClick({ id, name, genres, platforms, summary, cover: src });
+      }}
+    >
       <img src={src} />
       <h1>{name}</h1>
       {platforms ? <p>for {platforms}</p> : platforms}

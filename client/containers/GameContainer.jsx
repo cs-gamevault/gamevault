@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import Game from '../components/Game';
 import styles from './GameContainer.module.scss';
 
+import Game from '../components/Game';
+import Modal from '../modals/Modal';
 const GameContainer = () => {
   const [games, setGames] = useState([]);
-  
+  const [showModal, setShowModal] = useState(false);
+
   useEffect(() => {
     (async () => {
       // fetch game data for explore page
@@ -16,6 +18,7 @@ const GameContainer = () => {
         const game = data[i];
 
         const { id, name, cover, genres, platforms, summary } = game;
+
         let coverUrl = '';
         let allPlatforms = '';
         let allGenres = '';
@@ -39,6 +42,7 @@ const GameContainer = () => {
             platforms={allPlatforms}
             summary={summary}
             key={name}
+            onClick={setShowModal}
           />
         );
       }
@@ -49,6 +53,7 @@ const GameContainer = () => {
 
   return (
     <div className={styles.div}>
+      {showModal ? <Modal onClose={setShowModal} /> : null}
       <h2 className={styles.h2}>Explore Games!</h2>
       <div className={styles.container}>{games}</div>
     </div>
