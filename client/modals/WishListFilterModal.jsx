@@ -1,16 +1,24 @@
-import React from "react";
-import { FormGroup, FormControlLabel, Checkbox, Switch, Button } from "@mui/material";
+import React, { useContext } from 'react';
 
-const handleSubmit = () => {
-  /**
-   * Submits the selected items into a function to filter the displayed entries
-   * array from context so it populates accordingly in the wishlist container.
-   * 
-*/
-}
+import { FormGroup, FormControlLabel, Checkbox, Switch, Button } from '@mui/material';
 
-const WishListFilterModal = (props) => {
-  const { setShowFilterModal } = props;
+import { ApplicationContext } from '../AppContext';
+
+
+
+const WishListFiltersModal = props => {
+  const { showFiltersModal, setShowFiltersModal, setSelectedFilters } = useContext(ApplicationContext)
+  
+
+
+  const handleSubmit= () => {
+    /**
+     * Updates state with the selected filter options as an object with keys
+     * that match gameData keys, and values that are a list of selected filters.
+     * 
+     * should it reset the values of the filter options to false (empty)?
+     */
+  };
 
 
   return (
@@ -18,8 +26,17 @@ const WishListFilterModal = (props) => {
     // render a section for platform
     // render a submit button
     <div id="wishlist-modal">
-      <Button className="close-modal" variant="text" onClick={setShowFilterModal(false)}>x</Button>
-      <FormGroup id="wishlistselections">
+      <Button
+        className="close-modal"
+        variant="text"
+        onClick={() => {
+          setShowFiltersModal(false);
+        }}
+      >
+        x
+      </Button>
+
+      <FormGroup id="wishListSelections">
         <h2>Genre</h2>
         <FormControlLabel control={<Checkbox />} label="Genre#1" />
         <FormControlLabel control={<Checkbox />} label="Genre#2" />
@@ -31,15 +48,12 @@ const WishListFilterModal = (props) => {
         <h2>Show Unreleased Games</h2>
         <FormControlLabel control={<Switch />} label="Show Unreleased" />
         <br></br>
-        <Button type="submit" variant="contained" onClick={handleSubmit}>Filter</Button>        
+        <Button type="submit" variant="contained" onClick={() => { handleSubmit() }}>
+          Filter
+        </Button>
       </FormGroup>
     </div>
   );
-
-
-
-
-
 };
 
-export default WishListFilterModal
+export default WishListFiltersModal;
