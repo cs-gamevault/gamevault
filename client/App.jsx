@@ -13,7 +13,7 @@ import Login from './components/Login';
 import Register from './components/Register';
 import WishListContainer from './containers/WishListContainer';
 import AccountPage from './components/AccountPage';
-import APIContainer from './containers/APIContainer';
+import ExploreContainer from './containers/ExploreContainer';
 import StickyNavBar from './components/StickyNavBar';
 import NoMatch from './components/Register';
 
@@ -23,7 +23,7 @@ const router = createBrowserRouter(
       <Route path="/" element={<Login />} />
       <Route path="/register" element={<Register />} />
       <Route path="/wishlist" element={<WishListContainer />} />
-      <Route path="/explore" element={<APIContainer />} />
+      <Route path="/explore" element={<ExploreContainer />} />
       <Route path="/account" element={<AccountPage />} />
       <Route path="*" element={<NoMatch />} />
     </Route>
