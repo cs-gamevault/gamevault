@@ -28,6 +28,7 @@ const Register = () => {
 
       if ((await res).ok) {
         //  Call setUser_id() and pass in the id of the user
+        setUser_id(res.user_id);
         navigate('/wishlist');
       } else {
         setRegisterError(<span>Username already exists</span>);

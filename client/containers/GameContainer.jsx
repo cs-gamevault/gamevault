@@ -10,10 +10,8 @@ const GameContainer = props => {
   const [showModal, setShowModal] = useState(false);
 
   const { user_id } = useContext(ApplicationContext);
-
   useEffect(() => {
     async function getGames() {
-      console.log('exploring');
       // fetch game data for explore page
       const res = await fetch('/api/explore');
       const data = await res.json();
@@ -56,15 +54,13 @@ const GameContainer = props => {
     }
 
     async function getWishlist() {
-      console.log('Wishing');
-      const res = await fetch(`/api/wishlist/games?user_id=${props.user_id}`);
+      const res = await fetch(`/api/wishlist?user_id=${user_id}`);
       const data = await res.json();
-
       const newGames = [];
 
       for (let i = 0; i < data.length; i++) {
         const game = data[i];
-
+        console.log('game', game);
         const { id, name, cover, genres, platforms, summary } = game;
 
         let coverUrl = '';
@@ -72,13 +68,14 @@ const GameContainer = props => {
         let allGenres = '';
 
         if (cover) {
-          coverUrl = cover.url.slice(2);
+          console.log(cover);
+          coverUrl = cover;
         }
         if (platforms) {
-          allPlatforms = platforms.map(platform => platform.name).join(', ');
+          allPlatforms = platforms;
         }
         if (genres) {
-          allGenres = genres.map(genre => genre.name).join(', ');
+          allGenres = genres;
         }
 
         newGames.push(

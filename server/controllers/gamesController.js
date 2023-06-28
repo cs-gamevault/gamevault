@@ -14,7 +14,7 @@ const gameController = {
       if (existingGame.rows.length === 0) {
         const result = await db.query(
           // Insert the new game into the database
-          'INSERT INTO games (id,name, genres, platforms, cover, summary) VALUES ($1, $2, $3, $4 , $5, $6) RETURNING id',
+          'INSERT INTO games (id, name, genres, platforms, cover, summary) VALUES ($1, $2, $3, $4 , $5, $6) RETURNING id',
           [game.id, game.name, game.genres, game.platforms, game.cover, game.summary]
         );
         // Set game_id to the ID of the newly game

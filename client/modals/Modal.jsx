@@ -27,13 +27,17 @@ const ModalOverlay = props => {
     }
 
     if (props.mode === 'explore') {
-      endpoint = `/api/wishlist/games?user_id=${props.user_id}`;
+      endpoint = `/api/wishlist?user_id=${props.user_id}`;
       const body = { game: props.data };
       fetch(endpoint, {
         method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
         body: JSON.stringify(body),
       });
     }
+    props.onClose(false);
   }
 
   return (
@@ -59,7 +63,12 @@ const Modal = props => {
     <Fragment>
       {ReactDOM.createPortal(<Backdrop onClose={props.onClose} />, portalElement)}
       {ReactDOM.createPortal(
-        <ModalOverlay data={props.data} mode={props.mode}>
+        <ModalOverlay
+          data={props.data}
+          mode={props.mode}
+          user_id={props.user_id}
+          onClose={props.onClose}
+        >
           {props.children}
         </ModalOverlay>,
         portalElement

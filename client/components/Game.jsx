@@ -8,11 +8,10 @@ import './Game.scss';
 
 const Game = ({ id, name, cover, genres, platforms, summary, onClick }) => {
   const src = cover ? `https://${cover}` : smile;
-
   return (
     <button className='game'
       onClick={() => {
-        onClick({ id, name, genres, platforms, summary, cover: src });
+        onClick({ id, name, genres, platforms, summary, cover });
       }}
     >
       <img src={src} />
