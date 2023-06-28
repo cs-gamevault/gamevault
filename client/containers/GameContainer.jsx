@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import Game from '../components/Game';
-import styles from './ExploreContainer.module.scss';
+import styles from './GameContainer.module.scss';
 
-const APIResultContainer = () => {
+const GameContainer = () => {
   const [games, setGames] = useState([]);
 
   useEffect(() => {
@@ -29,4 +29,4 @@ const APIResultContainer = () => {
   );
 };
 
-export default APIResultContainer;
+export default GameContainer;
