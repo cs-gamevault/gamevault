@@ -1,30 +1,36 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { Button } from '@mui/material';
 
 const Login = () => {
   const navigate = useNavigate();
+  const [loginError, setLoginError] = useState();
 
-  const handleSubmit = e => {
-    e.preventDefault();
-    const loginInfo = {
-      username: e.target[0].value,
-      password: e.target[1].value,
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    const user = {
+      username: event.target[0].value,
+      password: event.target[1].value,
     };
-    console.log('NEW LOGIN: ', loginInfo);
-    fetch('/api/users/login', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'Application/JSON',
-      },
-      body: JSON.stringify(loginInfo),
-    })
-      .then(res => {
-        if (res.ok) {
-          navigate('/wishlist');
-        }
+
+    try {
+      const res = fetch('/api/users/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'Application/JSON' },
+        body: JSON.stringify(user)
       })
-      .catch(err => console.log('error from Join-Post-Request ERROR: ', err));
+
+      if ((await res).ok) {
+        navigate('/wishlist');
+      }
+      else {
+        setLoginError(<span>Invalid username or password</span>);
+      }
+    }
+    catch (err) {
+      console.log(`Error in Login.jsx: ${err}`)
+    }
   };
 
   return (
@@ -35,10 +41,10 @@ const Login = () => {
         <input id="username" name="username" type="text" placeholder="Username..." />
         <label htmlFor="password">Password</label>
         <input id="password" name="password" type="password" placeholder="Password..." />
+        {loginError}
         <Button variant="contained" type="submit">
           Log In
         </Button>
-
         <NavLink to="/register">
           <Button variant="outlined">Register</Button>
         </NavLink>
