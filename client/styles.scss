@@ -1,3 +1,5 @@
-@use './stylesheets/HomeContainer.scss';
-@use './stylesheets/SearchContainer.scss';
-@use './stylesheets/ListContainer.scss';
+@use './preflight.scss';
+
+body {
+  font-family: 'Inter', sans-serif;
+}

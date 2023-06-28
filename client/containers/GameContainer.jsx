@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useContext } from 'react';
-import styles from './GameContainer.module.scss';
-
+import { ApplicationContext } from '../AppContext';
 import Game from '../components/Game';
 import Modal from '../modals/Modal';
-import { ApplicationContext } from '../AppContext';
+
+import styles from './GameContainer.scss';
 
 const GameContainer = props => {
   const [games, setGames] = useState([]);
@@ -102,12 +102,12 @@ const GameContainer = props => {
   const title = props.mode === 'wish' ? 'Your Wishlist' : 'Explore Games';
 
   return (
-    <div className={styles.div}>
+    <div className='container'>
       {showModal ? (
         <Modal onClose={setShowModal} data={showModal} mode={props.mode} user_id={user_id} />
       ) : null}
-      <h2 className={styles.h2}>{title}</h2>
-      <div className={styles.container}>{games}</div>
+      <h2>{title}</h2>
+      <div className='games'>{games}</div>
     </div>
   );
 };
