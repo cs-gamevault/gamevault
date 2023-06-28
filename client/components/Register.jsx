@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { Button } from '@mui/material';
 
@@ -6,30 +6,33 @@ import { Button } from '@mui/material';
 
 const Register = () => {
   const navigate = useNavigate();
-  
-  const handleSubmit = e => {
-    e.preventDefault();
-    const userInfo = {
-      username: e.target[0].value,
-      password: e.target[1].value,
+  const [registerError, setRegisterError] = useState();
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    const user = {
+      username: event.target[0].value,
+      password: event.target[1].value,
     };
-    console.log('NEW USER: ', userInfo);
-    fetch('/api/users/register', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'Application/JSON',
-      },
-      body: JSON.stringify(userInfo),
-    })
-      .then(res => {
-        if (res.ok) {
-          navigate('/wishlist');
-        }
-        if (!res.ok) {
-          console.log('Username already exists.')
-        }
+
+    try {
+      const res = fetch('/api/users/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'Application/JSON' },
+        body: JSON.stringify(user)
       })
-      .catch(err => console.log('error from Join-Post-Request ERROR: ', err));
+
+      if ((await res).ok) {
+        navigate('/wishlist');
+      }
+      else {
+        setRegisterError(<span>Username already exists</span>);
+      }
+    }
+    catch (err) {
+      console.log(`Error in Register.jsx: ${err}`)
+    }
   };
 
   return (
@@ -40,10 +43,10 @@ const Register = () => {
         <input id="username" name="username" type="text" placeholder="Username..." />
         <label htmlFor="password">Password</label>
         <input id="password" name="password" type="password" placeholder="Password..." />
+        {registerError}
         <Button variant="contained" type="submit">
           Register
         </Button>
-
         <NavLink to="/">
           <Button variant="outlined">Return to Login</Button>
         </NavLink>
