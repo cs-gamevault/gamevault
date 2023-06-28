@@ -2,6 +2,7 @@ const express = require('express');
 const passport = require('passport');
 const session = require('express-session');
 const usersRouter = require('./routes/users');
+const exploreRouter = require('./routes/explore');
 
 const app = express();
 
@@ -25,6 +26,7 @@ app.use(passport.session());
 
 // route handlers
 app.use('/api/users', usersRouter);
+app.use('/api/explore', exploreRouter);
 
 // unknown route handler
 app.use('*', (req, res) => {
@@ -36,7 +38,7 @@ app.use((err, req, res, next) => {
   const defaultErr = {
     log: `Express caught an unknown middleware error: ${err}`,
     status: 500,
-    message: 'Internal Server Error'
+    message: 'Internal Server Error',
   };
 
   const { log, status, message } = Object.assign({}, defaultErr, err);
