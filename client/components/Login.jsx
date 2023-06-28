@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { Button } from '@mui/material';
 
-const Login = ({ onFormSwitch }) => {
+const Login = () => {
   const handleSubmit = e => {
     e.preventDefault();
     const loginInfo = {
@@ -10,7 +10,7 @@ const Login = ({ onFormSwitch }) => {
       password: e.target[1].value,
     };
     console.log('NEW LOGIN: ', loginInfo);
-    fetch('/login', {
+    fetch('/api/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'Application/JSON',
@@ -29,12 +29,12 @@ const Login = ({ onFormSwitch }) => {
   return (
     <div>
       <h2>Log In</h2>
-      <form>
+      <form onSubmit={e => handleSubmit(e)}>
         <label htmlFor="username">Username</label>
-        <input id="username" type="text" placeholder="Username..." />
+        <input id="username" name="username" type="text" placeholder="Username..." />
         <label htmlFor="password">Password</label>
-        <input id="password" type="password" placeholder="Password..." />
-        <Button variant="contained" type="submit" onSubmit={e => handleSubmit(e)}>
+        <input id="password" name="password" type="password" placeholder="Password..." />
+        <Button variant="contained" type="submit">
           Log In
         </Button>
 

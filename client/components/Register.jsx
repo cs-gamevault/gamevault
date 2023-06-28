@@ -3,7 +3,7 @@ import { Button } from "@mui/material";
 import { NavLink } from "react-router-dom";
 
 
-const Register = ({ onFormSwitch }) => {
+const Register = () => {
     const handleSubmit = e => {
       e.preventDefault();
       const userInfo = {
@@ -11,7 +11,7 @@ const Register = ({ onFormSwitch }) => {
         password: e.target[1].value,
       };
       console.log('NEW USER: ', userInfo);
-      fetch('/register', {
+      fetch('/api/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'Application/JSON',
@@ -35,7 +35,7 @@ const Register = ({ onFormSwitch }) => {
           <input id="username" type="text" placeholder="Username..." />
           <label htmlFor="password">Password</label>
           <input id="password" type="text" placeholder="Password..." />
-          <Button variant="contained" type="submit" onSubmit={e => handleSubmit(e)}>
+          <Button variant="contained" type="submit" onClick={e => handleSubmit(e)}>
             Register
           </Button>
           <NavLink to="/">
