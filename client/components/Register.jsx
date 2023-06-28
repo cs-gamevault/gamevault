@@ -11,7 +11,7 @@ const Register = ({ onFormSwitch }) => {
         password: e.target[1].value,
       };
       console.log('NEW USER: ', userInfo);
-      fetch('/login', {
+      fetch('/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'Application/JSON',
@@ -41,7 +41,6 @@ const Register = ({ onFormSwitch }) => {
           <NavLink to="/">
             <Button variant="outlined">Return to Login</Button>
           </NavLink>
-
         </form>
       </div>
     );
