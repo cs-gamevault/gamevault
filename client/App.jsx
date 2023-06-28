@@ -9,19 +9,21 @@ import {
 import './styles.scss';
 
 import AppContextProvider from './AppContext';
-import LoginContainer from './containers/LoginContainer';
-import HomeContainer from './containers/HomeContainer';
+import Login from './components/Login';
+import Register from './components/Register';
+import WishListContainer from './containers/WishListContainer';
 import AccountPage from './components/AccountPage';
 import APIContainer from './containers/APIContainer';
 import StickyNavBar from './components/StickyNavBar';
-import NoMatch from './components/NoMatch';
+import NoMatch from './components/Register';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route element={<StickyNavBar />}>
-      <Route path="/" element={<LoginContainer />} />
-      <Route path="/home" element={<HomeContainer />} />
-      <Route path="/add" element={<APIContainer />} />
+      <Route path="/" element={<Login />} />
+      <Route path="/register" element={<Register />} />
+      <Route path="/wishlist" element={<WishListContainer />} />
+      <Route path="/explore" element={<APIContainer />} />
       <Route path="/account" element={<AccountPage />} />
       <Route path="*" element={<NoMatch />} />
     </Route>

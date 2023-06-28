@@ -13,10 +13,10 @@ const StickyNavBar = () => {
     <div>
       <Outlet />
       <div id="sticky-nav-bar">
-        <NavLink to="/home">
+        <NavLink to="/wishlist">
           <HomeIcon />
         </NavLink>
-        <NavLink to="/add">
+        <NavLink to="/explore">
           <AddIcon />
         </NavLink>
         <NavLink to="/account">
