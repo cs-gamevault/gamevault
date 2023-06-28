@@ -4,7 +4,12 @@ const passport = require('passport');
 const usersController = require('../controllers/usersController');
 
 router.post('/register', usersController.createUser, (req, res) => {
-  return res.status(200).send({ message: 'Registration successful' });
+  if (res.locals.success) {
+    return res.status(201).send({ message: 'Registration successful' });
+  }
+  else {
+    return res.status(409).send({ message: 'Registration failed' });
+  }
 });
 
 router.post('/login', (req, res, next) => {
@@ -13,11 +18,11 @@ router.post('/login', (req, res, next) => {
       return next({ log: `Error in login: ${err}` });
     }
     
-    if (!user) {
-      return res.status(401).send({ message: 'Login failed' });
+    if (user) {
+      return res.status(200).send({ message: 'Login successful' });
     }
     else {
-      return res.status(200).send({ message: 'Login successful' });
+      return res.status(401).send({ message: 'Login failed' });
     }
   })(req, res, next);
 });
